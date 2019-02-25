@@ -122,7 +122,7 @@ def convex_hull(X,K,lam,gamma,**kwargs):
         ftilde = f[i]
 
         Q = 2*(Htilde + gamma*np.kron(tiling_array,np.eye(K)))
-        x = opt.PDIPAQuad(Q, ftilde, -Aeq, b, 10**-8)
+        x = opt.PDIPAQuad(Q, ftilde, Aeq, b, 10**-8)
 
         # Reconstruct weights
         Wtilde = x[:K] - x[K:2*K]
@@ -136,7 +136,8 @@ def convex_hull(X,K,lam,gamma,**kwargs):
             Y.append(X[i])
             Indices.append(i)
         else:
-            print(loc,i)
+            # print(loc,i)
+            pass
         #
 
         # Checking if each point recnostructed perfectly
