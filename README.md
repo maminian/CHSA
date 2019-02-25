@@ -1,12 +1,21 @@
-# CHSA
-Convex Hull Stratification Algorithm Code
+# About
 
-This repository contains MATLAB code related to the following article:
+This is a Python 3 implementation of the original Convex Hull Stratification Algorithm 
+code, which is written in Matlab. Most of the code has been transliterated, with 
+a few exceptions (some of which are critical to note):
+
+1. Optional arguments included in some functions to turn off print statements and convergence 
+information (by default);
+2. Other optional arguments are included to expose internal parameters as part of the 
+function call if desired, rather than needing to modify the python file;
+3. Arrays, and the corresponding code underneath, has been switched to respect 
+*row-major* format, which is the standard in Python. 
+
+This is a fork of 
+
+https://github.com/lziegelmeier/CHSA
+
+which itself is based on the article:
 
 L. Ziegelmeier, M. Kirby, C. Peterson, "Stratifying High-Dimensional Data Based on Proximity to the Convex Hull Boundary," SIAM Review, Vol. 59, No. 2, pp. 346-365, 2017.
 
-The file ConvexHull.m is the main piece of code which computes a weight vector associated to a set of K nearest neighbors for each point in a data set based on different preferences for a parameter lambda that enforces positivity and a parameter gamma that enforces uniformity in the weights.
-
-The file PDIPAQuad.m is called in the ConvexHull.m code. This solves the formulated quadratic program via the primal dual inter point algorithm. Note that this solves the full system of equations, however, reduced systems can speed up computations (although might induce instability).
-
-The file ConvHullPolygoninPlane.m is an example use file of random toy data created in the plane, then colored according to whether or not a point has an associated weight vector with a negative entry and then another figure which colors points according to magnitude of 2-norm.
