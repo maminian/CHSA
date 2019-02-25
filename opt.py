@@ -53,7 +53,7 @@ def PDIPAQuad(Q,c,A,b, tol=10**-4, minstep=10**-8, **kwargs):
     rho = np.dot(A,x) - b   # primal residual
     sigma = np.dot(A.T, nu) - lam + c + np.dot(Q,x) # dual residual
     gamma = np.dot(X,lam)   # complementarity
-    mu = gamma/(5*N) # ????????
+    mu = gamma/(5*N) # ?
 
     # normed residuals
     m1 = np.linalg.norm(rho,1)
@@ -168,14 +168,14 @@ if __name__=="__main__":
     # quick and dirty test; two dimensions,
     # one affine constraint:
     #
-    # min 0.5*(x**2 + y**2)
-    # s.t. -x - 2y <= 1
+    # min 0.5*( 0.5*x**2 + y**2 )
+    # s.t. x + y = 1
     #
-    # solution should lie on the boundary
-    # of the constraint; -x-2y = 1, where
-    # the Lagrange multiplier constraint should
-    # give necessary condition that the solution
-    # is parallel to (1,2).
+    # The solution should lie where
+    # the Lagrange multiplier constraint
+    # gives a necessary condition that the solution
+    # aligns to the gradient of the objective function.
+    #
 
     import numpy as np
     from matplotlib import pyplot
@@ -183,7 +183,7 @@ if __name__=="__main__":
     Q = np.eye(2)
     Q[0,0] = 0.5
     c = np.zeros(2)
-    A = np.array([[1,1]])   # er... signs?
+    A = np.array([[1,1]])
     b = np.array([8])
 
     x = PDIPAQuad(Q,c,A,b)
