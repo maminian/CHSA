@@ -1,5 +1,7 @@
 # About
 
+![chsa_preview](CHSA_2d_example.png)
+
 This is a Python 3 implementation of the original Convex Hull Stratification Algorithm 
 code, which is written in Matlab. Most of the code has been transliterated, with 
 a few exceptions (some of which are critical to note):
