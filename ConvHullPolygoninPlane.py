@@ -30,5 +30,9 @@ NormVec = np.linalg.norm(Wtil, axis=1)
 cax = ax[1].scatter(X[:,0], X[:,1], c=NormVec, cmap=pyplot.cm.plasma, edgecolor='k', s=60, vmin=0.)
 
 fig.colorbar(cax)
+ax[0].set_title('Boundary points demarcated red', fontsize=16)
+ax[1].set_title(r'Points colored according to $||\widetilde{\mathbf{W}}_i||_2$', fontsize=16)
 
+fig.tight_layout()
 fig.show()
+fig.savefig('CHSA_2d_example.png', dpi=120, bbox_inches='tight')
