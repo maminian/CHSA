@@ -18,12 +18,11 @@ def convex_hull(X,K,lam,gamma,**kwargs):
         gamma : parameter on the l_2 uniformity term
 
     Outputs:
-        Y : candidates for vertices of the convex hull
+        Y : coordinates of vertices in candidate convex hull
         WtildeMatrix : the K-by-p matrix corresponding to weight
             vectors associated to each point (note weight vectors
             with negative entries are candidate vertices)
-        Indices : indices of the original data set X with negative
-            entries in the weight vector
+        Indices : associated indices in original data associated with Y
 
     Optional inputs:
         verbosity : integer. Set greater than zero for print statements
@@ -33,6 +32,9 @@ def convex_hull(X,K,lam,gamma,**kwargs):
             see that documentation for the full list of options.
             Notable options include 'cosine', 'l1', and 'l2'.
             (default: 'euclidean')
+
+    Note: in the future I hope to modify the metric to accept
+        functional input for more exotic distances.
     '''
     import numpy as np
     from sklearn import metrics
@@ -130,9 +132,12 @@ def convex_hull(X,K,lam,gamma,**kwargs):
         WtildeMatrix[i] = Wtilde
 
         # Determining if the weight vector has negative entries
+        # TODO: investigate whether this should
+        # be -tol, where tol is the tolerance input
+        # to the PDIPAQuad() function.
         loc = np.where(Wtilde<0.)[0]
 
-        if len(loc)==0:
+        if len(loc)!=0:
             Y.append(X[i])
             Indices.append(i)
         else:

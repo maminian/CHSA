@@ -14,7 +14,8 @@ X = np.random.rand(n,2)
 # Run the algorithm
 Y,Wtil,Indices = convex_hull(X, 20, 10**-3, 10**-6)
 
-bdry_pts = np.setdiff1d(np.arange(n), Indices)
+bdry_pts = Indices
+interior_pts = np.setdiff1d(np.arange(n), Indices)
 
 # Visualize
 fig,ax = pyplot.subplots(1,2, sharex=True, sharey=True, figsize=(10,5))
