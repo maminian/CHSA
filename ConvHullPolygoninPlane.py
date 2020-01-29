@@ -36,4 +36,4 @@ ax[1].set_title(r'Points colored according to $||\widetilde{\mathbf{W}}_i||_2$',
 
 fig.tight_layout()
 fig.show()
-fig.savefig('CHSA_2d_example.png', dpi=120, bbox_inches='tight')
+#fig.savefig('CHSA_2d_example.png', dpi=120, bbox_inches='tight')
