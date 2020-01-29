@@ -163,10 +163,12 @@ if __name__=="__main__":
     y = np.sin(th) + 0.2*np.random.randn(51)
     X = np.array([[xv,yv] for xv,yv in zip(x,y)])
 
-    Y,Wt,Indices = convex_hull(X,4,1,1)
-
     fig,ax = pyplot.subplots(1,1)
     ax.scatter(x,y)
+    
+    Y,Wt,Indices = convex_hull(X,4,1e-2,1e-2)
+    ax.scatter(x[Indices], y[Indices], c='r', s=100)    # identified data
+    
     ax.axis('square')
     fig.show()
     pyplot.ion()
