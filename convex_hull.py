@@ -39,7 +39,7 @@ def convex_hull(X,K,lam,gamma,**kwargs):
     import numpy as np
     from sklearn import metrics
 
-    import opt  # contains quadratic program optimization routine
+    from . import opt  # contains quadratic program optimization routine
 
     verbosity = kwargs.get('verbosity',0)
     metric = kwargs.get('metric', 'euclidean')
